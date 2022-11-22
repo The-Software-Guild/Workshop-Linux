@@ -1,7 +1,7 @@
 # Wiley Edge Linux Workshop
 
 1. Print the 10th line of the file.  
-`head -n10 test.txt | tail -n1`  
+`head -n10 file.txt | tail -n1`  
 - Note: Head gets the top n number of lines, tail gets the last n number of lines. So we can get the last line after piping to tail
 
 2. Write a script that prints any given file line number.
