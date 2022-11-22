@@ -35,12 +35,12 @@
 `PID=$(ps -eaf | grep logger | grep -v grep | awk '{print $2')`
 - what is awk doing here?
 
-10. What files are the process are writing to?
-`lsof -p $PID | more`
-or, for live view 
-`sudo strace -f -t -e trace=file -p $PID`
-You can even grep for the file descriptors to only get files being appended to
-`sudo strace -f -t -e trace=file -p 42 2>&1 | egrep "O_WRONLY\|O_CREAT\|O_APPEND"`
+10. What files are the process are writing to?  
+`lsof -p $PID | more`.  
+or, for live view    
+`sudo strace -f -t -e trace=file -p $PID`.  
+You can even grep for the file descriptors to only get files being appended to.  
+`sudo strace -f -t -e trace=file -p 42 2>&1 | egrep "O_WRONLY\|O_CREAT\|O_APPEND"`.  
 
 11. Exit your termial session, log back in, and look for the process. Is is still there? How can we make it persist?   
 - You can use nohub, or screen. Practice doing this, it is important for commands that need to be executed longer than your bash session (especially if you are having connectivity or timeout issues)
