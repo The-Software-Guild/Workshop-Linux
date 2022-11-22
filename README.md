@@ -20,7 +20,7 @@
 `ls -i`
 
 5. Print the inode information of any file in the home folder.  
-`stat READEME.md`
+`stat file.txt`
 
 6. Start the logger.sh script. Send it to the background (ctrl +z), start it in the background (bg 1), and send it to the foreground again (fg 1). Use the jobs command in between each step. Repeat if you did not use jobs in between each step.
 
