@@ -16,7 +16,7 @@
 - The inode number often is disk location to the inode, but the inode itself is a struct (like in C ) that contains information about each file. The informaiton may include file size, permissions, group, owner, and blocks. 
 - The blocks are the actual memory locations the files are stored on, similar to arrays except the blocks do not have to be in order. When files are stored in blocks that are in non sequential memory locations, this is called fragmentation. 
 
-4. Suppose in an interview you were asked to list the inode number of a file. Use the man command on ls to find how to print inode keys. Search for the word inode in the manual. Being able to find an answer to an interview question by quickly searching a manual is vital.  
+4. Suppose in an interview you were asked to list the inode number of a file. Use the man command on ls to find how to print inode keys. Search for the word inode in the manual. Being able to find an answer to an interview question will earn you bonus points for problem solving and resourcefullness.  
 `ls -i`
 
 5. Print the inode information of any file in home folder.  
