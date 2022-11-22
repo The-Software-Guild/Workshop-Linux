@@ -12,7 +12,7 @@
     - `echo $?` will give us the exit code of the previous command. 0 is a pass. Anything else is fail
 
 3. In Unix, what are inodes (index nodes)?
-- Unix systems have a database where every file name that points to an inode number
+- Unix systems have a database where every file name points to an inode number
 - The inode number often is the disk location of the inode, but the inode itself is a struct (like in C ) that contains information about each file. The information may include file size, permissions, group, owner, and blocks. 
 - The blocks are the actual memory locations the files are stored on, similar to arrays, except the blocks do not have to be in order. When files are stored in blocks that are in non-sequential memory locations, this is called fragmentation. 
 
