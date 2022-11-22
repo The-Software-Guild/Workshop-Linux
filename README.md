@@ -41,10 +41,12 @@ or, for live view
 `sudo strace -f -t -e trace=file -p $PID`.  
 You can even grep for the file descriptors to only get files being appended to.  
 `sudo strace -f -t -e trace=file -p 42 2>&1 | egrep "O_WRONLY\|O_CREAT\|O_APPEND"`.  
+- Look these file descriptors up to understand what they mean 
 
 11. Exit your termial session, log back in, and look for the process. Is is still there? How can we make it persist?   
-- You can use nohub, or screen. Practice doing this, it is important for commands that need to be executed longer than your bash session (especially if you are having connectivity or timeout issues)
-- If using screen just enter `screen`, start your process, detact with `ctrl + a then d`. Read the manual for screen and find out how to list screen sessions and attach to one
+- You can use nohub, or screen. Practice doing this, it is important for commands that need to be executed longer than your bash session (especially if you are having connectivity or timeout issues) 
+- If using screen just enter `screen`, start your process, detatch with `ctrl + a then d`. Read the manual for screen and find out how to list screen sessions and attach to one.
+- Kill your screen session with `screen -Xs <sessionid> quit`, or enter screen session and type exit
 
 
 # Conclusion
