@@ -22,7 +22,7 @@
 5. Print the inode information of any file in home folder.  
 `stat READEME.md`
 
-6. Start the logger.sh script. Send it to background (ctrl +z) , start it in background (bg 1), and send it to foreground again (fg 1). Use the jobs command in between each step.
+6. Start the logger.sh script. Send it to background (ctrl +z) , start it in background (bg 1), and send it to foreground again (fg 1). Use the jobs command in between each step. Repeat if you did not use jobs in between each step.
 
 7. Kill the process (ctrl +c if in foreground, or kill -9 PID if in background) and start it again with & so that it starts in background
 
@@ -39,7 +39,7 @@
 `lsof -p $PID | more`
 or, for live view 
 `sudo strace -f -t -e trace=file -p $PID`
-You can even grep for the file descriptors
+You can even grep for the file descriptors to only get files being appended to
 `sudo strace -f -t -e trace=file -p 42 2>&1 | egrep "O_WRONLY\|O_CREAT\|O_APPEND"`
 
 11. Exit your termial session, log back in, and look for the process. Is is still there? How can we make it persist?   
