@@ -8,8 +8,8 @@
 - The first arg should be the file name
 - Second arg the line number
 - When complete, we will review a suggested solution
-- With the suggeted solution, how can we check if it ran successfully?
-- `echo $?` will give us exit code of previous command, 0 is pass antything else is fail
+    - With the suggeted solution, how can we check if it ran successfully?
+    - `echo $?` will give us exit code of previous command, 0 is pass antything else is fail
 
 3. In linux, what are inodes (index nodes)?
 - Unix systms have a database that every file name points to an inode number
