@@ -81,7 +81,7 @@ You can even grep for the file access modes
 - Note: You can redirect the output with `>`, or use the `-i` for inplace
 - Now replace the word hello in EVERY file it occours, with one command
 	- First, read the man for `xargs`
-	- grep -lrw hello . | xargs sed -i 's/\bhello\b/new/g'
+	- `grep -lrw hello . | xargs sed -i 's/\bhello\b/new/g'`
 
 16. Intall a common web server, such as httpd, and start it.  
 `sudo yum install httpd`  
