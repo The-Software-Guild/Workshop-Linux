@@ -1,5 +1,7 @@
 # Wiley Edge Linux Workshop
 
+- You can follow along with the docker compose app, or on AWS ec2 with a awslinux2 instance. Regardless, it is recommended to have a look at the aws docker compose app after the course. It contains everything you need to follow along on a linux container.
+
 ## Part 1 Processes and man
 
 1. Print the 10th line of the file.  
