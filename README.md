@@ -83,7 +83,7 @@ You can even grep for the file access modes
 	- First, read the man for `xargs`
 	- `grep -lrw hello . | xargs sed -i 's/\bhello\b/new/g'`
 
-16. Intall a common web server, such as httpd, and start it.  
+16. Intall a common web server, such as httpd, and start it. If on AWS, open port 80 in AWS security settings  
 `sudo yum install httpd`  
 `sudo systemctl start httpd`  
 - Now read the man page for `netstat`. Find out how to display listening ports. You should see port 80 (or http)  
