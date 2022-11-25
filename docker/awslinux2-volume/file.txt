@@ -1,0 +1,16 @@
+hello
+This is a test
+welcome
+hello world
+sea shells
+go Suns
+var="some text"
+var[0:5]
+print(var)
+some
+var2="on the other side of the rainbow"
+echo var[0:5] + "thing " + var2
+something on the other side of the rainbow
+answer="pot of gold"
+print(answer)
+pot of gold

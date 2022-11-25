@@ -20,7 +20,7 @@ usage() {
   cat << EOF >&2
 	Usage: $PROGNAME [-f <file>] [-n <number>]
 	-f <file>: The file to read the line from
- 	-n <number>: The line number to print to standard output 
+ 	-n <number>: The line number to print to standard output
 EOF
   exit 1
 }
