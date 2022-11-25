@@ -83,31 +83,35 @@ You can even grep for the file access modes
 	- First, read the man for `xargs`
 	- `grep -lrw hello . | xargs sed -i 's/\bhello\b/new/g'`
 
-16. Intall a common web server, such as httpd, and start it. If on AWS, open port 80 in AWS security settings  
+16. Intall a common web server, such as httpd, and start it. If on AWS, open port 80 (http) in AWS security group settings  
+`sudo yum update`   
 `sudo yum install httpd`  
 `sudo systemctl start httpd`  
-- Now read the man page for `netstat`. Find out how to display listening ports. You should see port 80 (or http)  
-`netstat -lpn`  
+- Use `dig TXT +short o-o.myaddr.l.google.com @ns1.google.com` to get public ip address, read man on dig!
+- Go to the ip address in browser
+
+17. Now read the man page for `netstat`. Find out how to display listening ports. You should see port 80 (or http)  
+`sudo netstat -lpn`  
 - Stop httpd, then look at ports again
 `sudo systemctl stop httpd`  
 `netstat -lpn`
 - If a server is running slow, you can use the `top` command to check its 
 - You can also monitor network traffic. Lots of tools exists for network traffic, however, [RedHat recommends](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-networking-monitoring_and_diagnosing_performance_problems) `ss`.  
-``
 `sudo netstat -ntcp`
 `watch ss -mip`  
 - Note: ss does not have the continous option like netstat, watch is useful but does not output to a file. The commands below display to standard output, and save to a file.
 `echo "" > network.out; while true; do sleep 2; ss -mip >> network.out; tail -n5 network.out; done`
 - What does the script above do with network.out?
 
-17. Finding log files through strace and file descriptors
+18. Finding log files through strace and file descriptors
 - Sometimes logs are written to file descriptors, like standard output (1) or standard error (2)
 - When a process makes a system call to open a file, it recieves a file descriptor that persist until the file is closed
 - The httpd web server maintains an open connection to the access_log file. We will use `xargs` and `strace` to find the file!  
 `ps auxw | grep httpd | awk '{print"-p " $2}' | sudo xargs strace`
 - Send a web request and look at the console. You should see a line that contains something similar to "write(8, "172.24.0.1 - - [25/Nov/2022:02:4"..., 194) = 194"
-- The first argument to write is the file descriptor, which belongs to the PID within the brackets, lets suppose it is 145
+- The first argument to write is the file descriptor, which belongs to the PID within the brackets, lets suppose the PID is 145
 - Obtain the file path of the file being written to with this `sudo ls -l /proc/145/fd`
+- Just look for the path associated to the file descriptor written to to get the file path!
 
 
 # Conclusion
