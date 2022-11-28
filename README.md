@@ -53,10 +53,10 @@ You can even grep for the file access modes
 - If using screen just enter `screen`, start your process, detact with `ctrl + a then d`. Read the manual for screen and find out how to list screen sessions and attach to one
 
 
-# Conclusion
+# Check Point
 
 - We started with a simple script that helped us review best bash practices (args, defensive coding)
-- We reviewed how to quickly ue the manual to find answers that you may be asked in intervies. Interviewers love to see your problem solving approach, and searching for text in a manual is a great asset in that situation.
+- We reviewed how to search a commands manual entry page. 
 - Ran a simple script in the background and found out information about that process, including which files it has open.
 - Exited the terminal and demonstrated that any child process of the bash process would be terminated. To keep this process running we used nohub or screen. Be careful not to keep child processes running longer than intended. 
 - If you ever need to kill all child processes, run `kill $(ps -o pid= --ppid $$)`, where $$ is the current bash process and can be replaced with any PID
@@ -65,17 +65,17 @@ You can even grep for the file access modes
 
 12. cd to `code` dir. Read the man for `dif`, search for large files, and use it to compare utils.py and app.py
 - Note: git diff provides a better UX for comparing files, but will only be available if git is installed. The `comm` command is another alternative.
-- Note: search for the `<` symbol in the manual to understand which file the difference comes from
+- Note: search for the `<` symbol in the manual to understand which file origined the line difference
 `diff --speed-large-files utils.py app.py`
 
 13. What lines of code are repeated in app.py?  
 `uniq -d app.py`
 
 14. In the code direcrory, list all files containing the WHOLE word `hello` (not words containing the string hello, such as nohello)  
-- Note: Make sure you read the man for grep and each option
+- Note: Make sure you read the man for grep and options
 `grep -lrw hello .`
 
-15. Replace the word `hello` (and only the word WHOLE word hello) in the file util.py  
+15. Replace the word `hello`(and only the word WHOLE word hello) **to the word new** in the file util.py  
 `sed 's/\bhello\b/new/g' util.py`  
 - Read the manual for sed (stream editor)
 - Note: You can redirect the output with `>`, or use the `-i` for inplace
@@ -95,15 +95,19 @@ You can even grep for the file access modes
 - Stop httpd, then look at ports again
 `sudo systemctl stop httpd`  
 `netstat -lpn`
-- If a server is running slow, you can use the `top` command to check its 
-- You can also monitor network traffic. Lots of tools exists for network traffic, however, [RedHat recommends](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-networking-monitoring_and_diagnosing_performance_problems) `ss`.  
+- If a server is running slow, you can use the `top` command to view the most computationally expensive processes
+
+
+18. Network traffic
+- If httpd is off, start it with ``sudo systemctl start httpd` `
+- Lots of tools exists for network traffic, however, [RedHat recommends](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-networking-monitoring_and_diagnosing_performance_problems) `ss`. One nice feature of netstat is the `-c` continious option
 `sudo netstat -ntcp`
 `watch ss -mip`  
 - Note: ss does not have the continous option like netstat, watch is useful but does not output to a file. The commands below display to standard output, and save to a file.
 `echo "" > network.out; while true; do sleep 2; ss -mip >> network.out; tail -n5 network.out; done`
 - What does the script above do with network.out?
 
-18. Finding log files through strace and file descriptors
+19. Finding log files through strace and file descriptors
 - Sometimes logs are written to file descriptors, like standard output (1) or standard error (2)
 - When a process makes a system call to open a file, it recieves a file descriptor that persist until the file is closed
 - The httpd web server maintains an open connection to the access_log file. We will use `xargs` and `strace` to find the file!  
