@@ -58,7 +58,7 @@ You can even grep for the file access modes
 
 ## Part 2 Advanced Commands
 
-12. cd to `code` dir. Read the man for `dif`, search for large files, and use it to compare utils.py and app.py
+12. cd to `code` dir. Read the man for `diff`, search for large files, and use it to compare utils.py and app.py
 - Note: git diff provides a better UX for comparing files, but will only be available if git is installed. The `comm` command is another alternative.
 - Note: search for the `<` symbol in the manual to understand which file origined the line difference
 `diff --speed-large-files utils.py app.py`
