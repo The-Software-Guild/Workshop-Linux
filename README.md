@@ -48,19 +48,19 @@ You can even grep for the file access modes
 
 ## Part 2 Advanced Commands
 
-12. cd to `code` dir. Read the man for `diff`, search for large files, and use it to compare utils.py and app.py
+1. cd to `code` dir. Read the man for `diff`, search for large files, and use it to compare utils.py and app.py
 - Note: git diff provides a better UX for comparing files, but will only be available if git is installed. The `comm` command is another alternative.
 - Note: search for the `<` symbol in the manual to understand which file origined the line difference
 `diff --speed-large-files utils.py app.py`
 
-13. What lines of code are repeated in app.py?  
+2. What lines of code are repeated in app.py?  
 `uniq -d app.py`
 
-14. In the code direcrory, list all files containing the WHOLE word `hello` (not words containing the string hello, such as nohello)  
+3. In the code direcrory, list all files containing the WHOLE word `hello` (not words containing the string hello, such as nohello)  
 - Note: Make sure you read the man for grep and options
 `grep -lrw hello .`
 
-15. Replace the word `hello`(and only the word WHOLE word hello) **to the word new** in the file util.py  
+4. Replace the word `hello`(and only the word WHOLE word hello) **to the word new** in the file util.py  
 `sed 's/\bhello\b/new/g' util.py`  
 - Read the manual for sed (stream editor)
 - Note: You can redirect the output with `>`, or use the `-i` for inplace
@@ -68,14 +68,14 @@ You can even grep for the file access modes
 	- First, read the man for `xargs`
 	- `grep -lrw hello . | xargs sed -i 's/\bhello\b/new/g'`
 
-16. Intall a common web server, such as httpd, and start it. If on AWS, open port 80 (http) in AWS security group settings  
+5. Intall a common web server, such as httpd, and start it. If on AWS, open port 80 (http) in AWS security group settings  
 `sudo yum update`   
 `sudo yum install httpd`  
 `sudo systemctl start httpd`  
 - Use `dig TXT +short o-o.myaddr.l.google.com @ns1.google.com` to get public ip address, read man on dig!
 - Go to the ip address in browser
 
-17. Now read the man page for `netstat`. Find out how to display listening ports. You should see port 80 (or http)  
+6. Now read the man page for `netstat`. Find out how to display listening ports. You should see port 80 (or http)  
 `sudo netstat -lpn`  
 - Stop httpd, then look at ports again
 `sudo systemctl stop httpd`  
@@ -83,7 +83,7 @@ You can even grep for the file access modes
 - If a server is running slow, you can use the `top` command to view the most computationally expensive processes
 
 
-18. Network traffic
+7. Network traffic
 - If httpd is off, start it with `sudo systemctl start httpd`
 - Lots of tools exists for network traffic, however, [RedHat recommends](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-networking-monitoring_and_diagnosing_performance_problems) `ss`. One nice feature of netstat is the `-c` continious option
 `sudo netstat -ntcp`
@@ -92,7 +92,7 @@ You can even grep for the file access modes
 `echo "" > network.out; while true; do sleep 2; ss -mip >> network.out; tail -n5 network.out; done`
 - What does the script above do with network.out?
 
-19. Finding log files through strace and file descriptors
+8. Finding log files through strace and file descriptors
 - Sometimes logs are written to file descriptors, like standard output (1) or standard error (2)
 - When a process makes a system call to open a file, it recieves a file descriptor that persist until the file is closed
 - The httpd web server maintains an open connection to the access_log file. We will use `xargs` and `strace` to find the file!  
