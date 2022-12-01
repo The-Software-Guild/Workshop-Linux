@@ -42,7 +42,7 @@
 - Break the command down, run the first part, then add subsequent pipes one at a time.
 
 10. What files are the process are writing to?
-`lsof -p $PID | more`
+`lsof -p $PID`
 or, for live view 
 `sudo strace -f -t -e trace=file -p $PID`
 You can even grep for the file access modes
