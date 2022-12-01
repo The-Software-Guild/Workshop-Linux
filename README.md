@@ -106,7 +106,7 @@ You can even grep for the file access modes
 - Sometimes logs are written to file descriptors, like standard output (1) or standard error (2)
 - When a process makes a system call to open a file, it recieves a file descriptor that persist until the file is closed
 - The httpd web server maintains an open connection to the access_log file. We will use `xargs` and `strace` to find the file!  
-`ps auxw | grep httpd | awk '{print"-p " $2}' | sudo xargs strace`
+`ps aux | grep httpd | awk '{print"-p " $2}' | sudo xargs strace`
 - Send a web request and look at the console. You should see a line that contains something similar to "write(8, "172.24.0.1 - - [25/Nov/2022:02:4"..., 194) = 194"
 - The first argument to write is the file descriptor, which belongs to the PID within the brackets, lets suppose the PID is 145
 - Obtain the file path of the file being written to with this `sudo ls -l /proc/145/fd`
