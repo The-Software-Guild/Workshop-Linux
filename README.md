@@ -94,7 +94,7 @@ You can even grep for the file access modes
 
 
 18. Network traffic
-- If httpd is off, start it with ``sudo systemctl start httpd` `
+- If httpd is off, start it with `sudo systemctl start httpd`
 - Lots of tools exists for network traffic, however, [RedHat recommends](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-networking-monitoring_and_diagnosing_performance_problems) `ss`. One nice feature of netstat is the `-c` continious option
 `sudo netstat -ntcp`
 `watch ss -mip`  
