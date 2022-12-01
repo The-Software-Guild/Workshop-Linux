@@ -48,18 +48,12 @@ or, for live view
 You can even grep for the file access modes
 `sudo strace -f -t -e trace=file -p $PID 2>&1 | egrep "O_WRONLY\|O_CREAT\|O_APPEND"`
 
-11. Exit your termial session, log back in, and look for the process. Is is still there? How can we make it persist?   
-- You can use nohub, or screen. Practice doing this, it is important for commands that need to be executed longer than your bash session (especially if you are having connectivity or timeout issues)
-- If using screen just enter `screen`, start your process, detact with `ctrl + a then d`. Read the manual for screen and find out how to list screen sessions and attach to one
-
 
 # Check Point
 
 - We started with a simple script that helped us review best bash practices (args, defensive coding)
 - We reviewed how to search a commands manual entry page. 
 - Ran a simple script in the background and found out information about that process, including which files it has open.
-- Exited the terminal and demonstrated that any child process of the bash process would be terminated. To keep this process running we used nohub or screen. Be careful not to keep child processes running longer than intended. 
-- If you ever need to kill all child processes, run `kill $(ps -o pid= --ppid $$)`, where $$ is the current bash process and can be replaced with any PID
 
 ## Part 2 Advanced Commands
 
