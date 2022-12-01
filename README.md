@@ -16,32 +16,22 @@
 - `echo $?` will give us exit code of previous command, 0 is pass antything else is fail
 - What is the purpose of the shift command in this script?
 
-3. In linux, what are inodes (index nodes)?
-- Unix systems have a database that every file name points to an inode number
-- The inode number often is disk location to the inode, but the inode itself is a struct (like in C ) that contains information about each file. The informaiton may include file size, permissions, group, owner, and blocks. 
-- The blocks are the actual memory locations the files are stored on, similar to arrays except the blocks do not have to be in order. When files are stored in blocks that are in non sequential memory locations, this is called fragmentation. 
 
-4. Suppose in an interview you were asked to list the inode number of a file. Use the man command on ls to find how to print inode keys. Search for the word inode in the manual. Being able to find an answer to an interview question by quickly searching a manual is vital.  
-`ls -i`
+3. Start the logger.sh script. Send it to background (ctrl +z) , start it in background (bg 1), and send it to foreground again (fg 1). Use the jobs command in between each step.
 
-5. Print the inode information of any file in home folder.  
-`stat READEME.md`
+4. Kill the process (ctrl +c if in foreground, or kill -9 PID if in background) and start it again with & so that it starts in background
 
-6. Start the logger.sh script. Send it to background (ctrl +z) , start it in background (bg 1), and send it to foreground again (fg 1). Use the jobs command in between each step.
-
-7. Kill the process (ctrl +c if in foreground, or kill -9 PID if in background) and start it again with & so that it starts in background
-
-8. Confirm it is running with ps and grep  
+5. Confirm it is running with ps and grep  
 `ps -ef | grep logger | grep -v grep` 
 - Note: The second grep removes the first grep searching for the actual process!
-- Note: Run `ps -ef` without grep. Notice the parent process to the logger script is the current bash session. If you exit bash, all processes whos parent is bash will be terminated as well! 
+- Note: Run `ps -ef` without grep. Notice the parent process to the logger script is the current bash session.
 
-9. Now save the PID in a variable named PID
+6. Now save the PID in a variable named PID
 `PID=$(ps -ef | grep logger | grep -v grep | awk '{print $2')`
 - what is awk doing here?
 - Break the command down, run the first part, then add subsequent pipes one at a time.
 
-10. What files are the process are writing to?
+7. What files are the process are writing to?
 `lsof -p $PID`
 or, for live view 
 `sudo strace -f -t -e trace=file -p $PID`
