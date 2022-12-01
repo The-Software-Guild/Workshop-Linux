@@ -47,6 +47,7 @@ or, for live view
 `sudo strace -f -t -e trace=file -p $PID`
 You can even grep for the file access modes
 `sudo strace -f -t -e trace=file -p $PID 2>&1 | egrep "O_WRONLY\|O_CREAT\|O_APPEND"`
+- When done, exit strace and kill the process
 
 
 # Check Point
