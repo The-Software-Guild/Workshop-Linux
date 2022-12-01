@@ -32,12 +32,12 @@
 7. Kill the process (ctrl +c if in foreground, or kill -9 PID if in background) and start it again with & so that it starts in background
 
 8. Confirm it is running with ps and grep  
-`ps -eaf | grep logger | grep -v grep` 
+`ps -ef | grep logger | grep -v grep` 
 - Note: The second grep removes the first grep searching for the actual process!
 - Note: Run `ps -eaf` without grep. Notice the parent process to the logger script is the current bash session. If you exit bash, all processes whos parent is bash will be terminated as well! 
 
 9. Now save the PID in a variable named PID
-`PID=$(ps -eaf | grep logger | grep -v grep | awk '{print $2')`
+`PID=$(ps -ef | grep logger | grep -v grep | awk '{print $2')`
 - what is awk doing here?
 - Break the command down, run the first part, then add subsequent pipes one at a time.
 
