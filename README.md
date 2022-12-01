@@ -34,7 +34,7 @@
 8. Confirm it is running with ps and grep  
 `ps -ef | grep logger | grep -v grep` 
 - Note: The second grep removes the first grep searching for the actual process!
-- Note: Run `ps -eaf` without grep. Notice the parent process to the logger script is the current bash session. If you exit bash, all processes whos parent is bash will be terminated as well! 
+- Note: Run `ps -ef` without grep. Notice the parent process to the logger script is the current bash session. If you exit bash, all processes whos parent is bash will be terminated as well! 
 
 9. Now save the PID in a variable named PID
 `PID=$(ps -ef | grep logger | grep -v grep | awk '{print $2')`
